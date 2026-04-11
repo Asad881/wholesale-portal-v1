@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app-deployment
+  template:
+    metadata:
+      labels:
+        app: my-app-deployment
+    spec:
+      containers:
+      - name: my-app-container
+        image: shiekh664/whole-sale-portal:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
